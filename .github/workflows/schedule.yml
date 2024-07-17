@@ -1,0 +1,10 @@
+name: Schedule
+on:
+  schedule:
+    # 1min
+    - cron: '*/1 * * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: date # date is a command that prints the current date and time

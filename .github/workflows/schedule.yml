@@ -1,10 +1,32 @@
-name: Schedule
+name: Scheduled and Manual Test
+
 on:
   schedule:
-    # 1min
-    - cron: '*/1 * * * *'
+    # 毎時0分に実行
+    - cron: '/15 * * * *'
+
+  # 手動実行のトリガーを追加
+  workflow_dispatch:
+
+  # プルリクエストとプッシュでも実行
+  pull_request:
+  push:
+    branches: [ main ]
+
 jobs:
-  run:
+  test-run:
     runs-on: ubuntu-latest
     steps:
-      - run: date # date is a command that prints the current date and time
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run test command
+        run: |
+          echo "Current date and time:"
+          date
+          echo "This job was triggered by: ${{ github.event_name }}"
+
+      - name: Additional test step
+        run: |
+          echo "Running additional tests or commands here"
+          # ここに他のテストコマンドを追加できます

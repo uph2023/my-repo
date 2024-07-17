@@ -10,4 +10,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 1.22
-      - run: go test go/excellent/*.go
+      - name: Run tests
+        run: |
+          cd go/excellent
+          go test -v ./...

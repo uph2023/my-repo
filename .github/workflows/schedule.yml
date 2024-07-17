@@ -3,7 +3,7 @@ name: Scheduled and Manual Test
 on:
   schedule:
     # 毎時0分に実行
-    - cron: '/15 * * * *'
+    - cron: '*/1 * * * *'
 
   # 手動実行のトリガーを追加
   workflow_dispatch:
